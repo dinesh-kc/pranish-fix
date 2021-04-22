@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div style="margin-left: 260px; padding: 22px;">
+{% if is_imported %} 
+<div class="row">
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Congratulations</strong> Data Imported Successfully !!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+
+{% endif %}
+  <!-- Button trigger modal -->
+  
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+    style="margin-left: 15px;">
+    Add Medicine
+  </button>
+
+
+
+  <div class="form-group" style="width: 250px; margin: 10px;">
+  <br>
+  <br>
+  <br>
+  </div>
+  
+
+
+  <div class="form-group" style="width: 250px; margin-left: 430px; margin-top: -70px;">
+  </div>
+  
+  <div class="card" style="margin: 12px; margin-top: -15px;">
+    <div class="card-header thead-light">
+      Medicine Details
+    </div>
+    <div class="card-body">
+
+
+      <table class="table" id="tblFilter">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">S.N</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">S.P</th>
+            <th scope="col">Expiry Date</th>
+            <th scope="col">Supplier</th>
+            <th scope="col">Bought Date</th>
+            <th scope="col">Time Table</th>
+            <th scope="col">Available Quantity</th>
+            <th scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for medicine in medicines%}
+          <tr>
+            <th scope="row">{{medicine.id}}</th>
+            <td>{{medicine.med_name}}</td>
+            <td>{{medicine.price}}</td>
+            <td>{{medicine.selling_price}}</td>
+            <td>{{medicine.supplier}}</td>
+            <td>{{medicine.bought_date}}</td>
+            <td>{{medicine.expiry_date}}</td>
+            <td>{{medicine.time_table}}</td>
+            <td>{{medicine.quantity}}</td>
+            <td>
+              <a href="/medicine_update/{{medicine.id}}"<i class="fa fa-edit" style='padding: 10px; font-size: 22px;'></i> </a>
+              <a href="/medicine_delete/{{medicine.id}}"  <i class="fa fa-trash" style="color:red; padding: 10px; font-size: 22px;"> </a>
+
+            </td>
+
+          </tr>
+
+
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <form action="{{request.path}}" method="POST">
+    {% csrf_token %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Enter Medicine Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+
+
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Medicine_Name</label>
+              <input required type="text" class="form-control" id="medicineName" name="med_name"
+                placeholder="Calcamax">
+            </div>
+            <div class="form-group">
+              <label for="">Price</label>
+              <input required type="text" class="form-control" id="Price" name="price" placeholder="Rs.150">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Selling Price</label>
+              <input required type="text" class="form-control" id="SP" name="selling_price" placeholder="Rs. 170">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Expiry Date</label>
+              <input required type="text" class="form-control" id="Expirydate" name="expiry_date"
+                placeholder="2022/12/2">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Supplier</label>
+              <input required type="text" class="form-control" id="Supplier" name="supplier"
+                placeholder="Chaulagai Pharma, Brt">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Bought Date</label>
+              <input required type="text" class="form-control" id="Boughtdate" name="bought_date"
+                placeholder="2021/2/2">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Time Table</label>
+              <input required type="text" class="form-control" id="TT" name="time_table"
+                placeholder="Morning/Evening">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Quantity</label>
+              <input required type="text" class="form-control" id="TT" name="quantity"
+                placeholder="3">
+            </div>
+
+  </form>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <button type="submit" class="btn btn-primary">Save</button>
+</div>
+{% endblock %}

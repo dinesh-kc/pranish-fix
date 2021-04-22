@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block body %}
+<div style="margin-left: 260px; padding: 22px;">
+    <h1>Total Sells Report: </h1><a href="{% url 'sell_medicine' %}" class="btn btn-outline-info">New Sell</a>
+    <hr>
+    <table class="display" style="width:100%" id="tblFilter">
+        <thead>
+            <tr>
+
+                <th>SN</th>
+                <th>Medicine Name</th>
+                <th>Customer Name</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Amount to Pay</th>
+                <th>Paid Amount</th>
+                <th>Remaining Amount</th>
+                <th>Transaction Type</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{transaction.medicine}}</td>
+                <td>{{transaction.customer_name}}</td>
+                <td>{{transaction.medicine.total_amount | intcomma}}</td>
+
+                <td>{{transaction.quantity  }}</td>
+                <td>{{transaction.amount_to_pay}}</td>
+                <td>{{transaction.received_amount}}</td>
+                <td>{{transaction.remaining_amount}}</td>
+                <td>{{transaction.get_transaction_type_display}}</td>
+                
+            </tr>
+           {% endfor %}
+        </tbody>
+     
+    </table>
+</div>
+{% endblock %}

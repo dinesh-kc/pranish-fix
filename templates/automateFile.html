@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div style="margin-left: 250px; padding: 22px;">
+
+
+  <div class="card" style = "margin: 70px;">
+   
+    <div class="card-body">
+      
+      <a href="https://katwalanil.com.np/wp-content/uploads/2021/03/file_format-9-2.xlsx" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+      </svg>  Download Format</a>
+    <h2 style "text-align: center"> Automate the Medicine  </h2>
+  
+      <form method="post" enctype="multipart/form-data" >
+      {% csrf_token %}
+      <input type="file" name="excel_file">
+          <button type="submit">Upload</button>
+          </form>
+          </div>
+          
+    {% comment %} <div class="form-group">
+      <label for="exampleInputEmail1">Provide a proper file path: </label><br>
+  <input type="file" id="myfile" name="excel_file" class="btn btn-danger">  </div>
+    </div>
+  </form>
+  
+    <button type="submit" class="btn btn-danger" style = "width: 150px; margin-left: 150px; margin-top: -7px;">Automate</button>
+      <br>
+      <button type="submit" class="btn btn-danger" style = "width: 150px; margin-left: 350px; margin-top: -62px;">Cancel</button>
+  
+    <br> {% endcomment %}
+  
+    Instructions:<br>
+  <ul>
+    <li>Please provide the correct path in the text field</li>
+    <li>Click Automate for importing the file.</li>
+    <li>Please, go to manage medicine and see the imported medicines over there</li>
+  </ul>
+  
+   
+  </div>
+  
+
+{% endblock %}

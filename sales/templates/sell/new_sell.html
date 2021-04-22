@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div style="margin-left: 260px; padding: 22px;" ng-app="sellApp" ng-controller="myCtrl">
+  <h1>sell the item [[firstName]]</h1>
+  {% if mquantity %}
+  <div class="row">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Error!</strong> Sorry , Maximum available quantity for this medicine is : {{mquantity}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  {% endif %}
+  <div class="row">
+    <div class="container">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          {% csrf_token %}
+          <form method="post" novalidate >
+            {% csrf_token %}
+
+            {{ form | crispy }}
+
+            <button type="submit" class="btn btn-primary">Add To Sell</button>
+            <!-- <input class="btn btn-primary" type="submit" name="add_text" value="Save and add text" /> -->
+
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <hr>
+          <h1>Verify Your Sells</h1>
+          <table class="table table-sm table-responsive">
+            <thead>
+              <tr>
+                <th>Medicine Id</th>
+                <th>Quantity</th>
+                <th>Customer Name</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for mdcn in TotalSells %}
+              <tr>
+                <td>{{mdcn.medicine_id}}</td>
+                <td>{{mdcn.quantity}}</td>
+                <td>{{mdcn.customer_name}}</td>
+              </tr>
+              {% endfor %}
+
+            </tbody>
+          </table>
+
+          <form action="{% url 'multiple_sell' %}">
+            <!-- <button class="btn btn-outline-danger" type="submit">Place Order</button> -->
+          </form>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block angular %}
+<!-- <script>
+  var app = angular.module('sellApp', []);
+  app.config(function ($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+  });
+
+
+
+  app.controller('myCtrl', function ($scope) {
+    let s = $scope
+    
+    s.
+  });
+</script> -->
+
+{% endblock %}

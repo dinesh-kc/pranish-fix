@@ -1,0 +1,8 @@
+future recommendation : 
+    - Dynamic medicine quantity and price fetch when medicine is selected in sale medicine page 
+    - use of some Javascript libraries to sell medicine to make ease to user .
+    -proper UI design with some powerful designing Css and Javascript Library
+    -  Use of Powerful database like Postgres,mysql rather than light weighted sqlite database.
+    - Automatic send reciept to the user when medicine is purchased.
+    -Medicine sell report fetch on customer id basis. 
+    - and so on 

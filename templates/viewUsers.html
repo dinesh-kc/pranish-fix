@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+
+<div style="margin-left: 260px; padding: 22px;">
+
+
+
+<div class="card" style = "margin: 12px; margin-top: -15px;">
+  <div class="card-header thead-light">
+  <a href="{% url 'register' %}" > Register New</a>
+<br>
+    User Details
+  </div>
+  <div class="card-body">
+   
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">User Status</th>
+      <th scope="col">User Role</th>
+    
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{user.username}}</td>
+      <td>{% if user.is_active %} Active {% else  %} Inactive {% endif %}</td>
+      <td>{% if user.is_superuser %} Super User {% else %} Staff User {% endif %}</td>
+  
+    
+
+    </tr>
+     
+{% endfor %}
+
+
+    
+  </tbody>
+</table>
+
+
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter Medicine Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+
+<form action = "" method = "POST">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Medicine_Name</label>
+    <input type="text" class="form-control" id="medicineName" name = "med_name" placeholder="Calcamax">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Price</label>
+    <input type="password" class="form-control" id="Price" name = "price" placeholder="Rs.150">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Selling Price</label>
+    <input type="text" class="form-control" id="SP" name = "selling_price" placeholder="Rs. 170">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Expiry Date</label>
+    <input type="text" class="form-control" id="Expirydate"  name = "expiry_date" placeholder="2022/12/2">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Supplier</label>
+    <input type="text" class="form-control" id="Supplier" name = "supplier" placeholder="Chaulagai Pharma, Brt">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Bought Date</label>
+    <input type="text" class="form-control" id="Boughtdate" name = "bought_date"  placeholder="2021/2/2">
+  </div>
+  
+   <div class="form-group">
+    <label for="exampleInputEmail1">Time Table</label>
+    <input type="text" class="form-control" id="TT" name = "timte_table" placeholder="Morning/Evening">
+  </div>
+
+</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <!-- /.navbar -->
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div style="margin-left: 340px; padding: 22px;">
+
+
+  <div class="card">
+    <div class="card-header">
+      Order
+       
+    </div>
+   
+    <div class="card-body">
+      <!-- Editable table -->
+      <div class="card">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Order a Medicine</h3>
+        <div class="card-body">
+        
+          {% comment %} <div id="table" class="table-editable">
+            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x"
+                  aria-hidden="true"></i></a></span>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <thead>
+                <tr>
+                  <th class="text-center">Medicine Name</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Ordered By</th>
+                  <th class="text-center">Action</th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="pt-3-half" contenteditable="true"></td>
+                  <td class="pt-3-half" contenteditable="true"></td>
+                  <td class="pt-3-half" contenteditable="true"></td>
+
+
+                  </td>
+                  <td>
+                    <span class="table-remove"><button type="button"
+                        class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div> {% endcomment %}
+
+          <div class="form-group">
+
+            <form action="" method="Post">
+              {% csrf_token %}
+              <table>
+                <tr>
+                  <td>
+                    <label for="text">To</label>
+
+                  </td>
+                  <td> <input type="email" name="toEmail" class="form-control" required> </td>
+
+                </tr>
+
+                <tr>
+                  <td>
+                    <label for="text">Order Medicine</label>
+
+                  </td>
+                  <td> <textarea type="items" name="orderItems" class="form-control"
+                      style="width: 700px; height: 200px;" required>  </textarea> </td>
+                </tr>
+
+               
+                  <tr>
+                  <td>
+                    <label for="text">Supplier Name</label>
+
+                  </td>
+                  <td> <input type="text" name="supplier" class="form-control" required> </td>
+
+                </tr>
+
+                <tr>
+                  <td>
+                    <input type="submit" value="Send" class="btn btn-danger">
+                    <input type="reset" value="Clear" class="btn btn-danger">
+
+                  </td>
+                </tr>
+
+              </table>
+
+
+
+
+          </div>
+
+          <div class="form-group">
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+      <!-- Editable table -->
+    </div>
+  </div>
+
+
+</div>
+<!-- /.navbar -->
+{% endblock %}
